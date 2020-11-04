@@ -25,18 +25,20 @@ export default function Home({ posts, setPosts }) {
           <li className={styles.listItem} key={index}>
             <span className={styles.listNumber}>{post.id}</span>
             <span className={styles.listText}>{post.title}</span>
-            <Link to={`/details/${post.id}`}>
-              <button className={styles.button}>🔎</button>
-            </Link>
-            <Link to={`/edit/${post.id}`}>
-              <button className={styles.button}>✒️</button>
-            </Link>
-            <button
-              className={styles.button}
-              onClick={() => handleDelete(post.id)}
-            >
-              🗑
-            </button>
+            <div className={styles.actions}>
+              <Link to={`/details/${post.id}`}>
+                <button className={styles.button}>🔎</button>
+              </Link>
+              <Link to={`/edit/${post.id}`}>
+                <button className={styles.button}>✒️</button>
+              </Link>
+              <button
+                className={styles.button}
+                onClick={() => handleDelete(post.id)}
+              >
+                🗑
+              </button>
+            </div>
           </li>
         ))}
       </ul>

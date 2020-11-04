@@ -38,3 +38,21 @@
   padding: 5px;
   margin: 0 3px;
 }
+
+.actions {
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .listItem {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 1px solid white;
+    padding: 20px;
+  }
+
+  .button {
+    padding: 8px;
+  }
+}

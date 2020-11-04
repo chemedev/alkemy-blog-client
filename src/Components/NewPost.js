@@ -39,6 +39,7 @@ export default function NewPost({ setPosts }) {
             Title
           </label>
           <input
+            placeholder="This is an awesome post !"
             className={styles.input}
             type="text"
             id="title"
@@ -52,6 +53,7 @@ export default function NewPost({ setPosts }) {
             Body
           </label>
           <textarea
+            placeholder="Wahooo, NOW I'm a celebrity 🤭"
             className={styles.textArea}
             type="text"
             id="body"
