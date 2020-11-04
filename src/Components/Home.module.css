@@ -1,0 +1,40 @@
+.title {
+  text-align: center;
+  color: azure;
+}
+
+.list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.listItem {
+  padding: 10px;
+  text-align: center;
+}
+
+.listNumber {
+  display: inline-block;
+  background-color: cadetblue;
+  width: 50px;
+  padding: 5px 0;
+  text-align: center;
+  color: aliceblue;
+  border-radius: 4px;
+}
+
+.listText {
+  display: inline-block;
+  color: aliceblue;
+  text-decoration-line: none;
+  padding: 5px 0;
+  margin-left: 5px;
+  width: 600px;
+  text-transform: capitalize;
+}
+
+.button {
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 3px;
+}

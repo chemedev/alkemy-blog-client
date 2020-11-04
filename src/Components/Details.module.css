@@ -1,0 +1,11 @@
+.title {
+  color: azure;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.body {
+  color: aliceblue;
+  margin: 0 auto;
+  max-width: 60%;
+}

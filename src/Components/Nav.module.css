@@ -1,0 +1,21 @@
+nav {
+  background-color: cadetblue;
+  text-align: center;
+}
+
+.link {
+  color: aliceblue;
+  display: inline-block;
+  padding: 10px;
+  text-decoration-line: none;
+  text-transform: uppercase;
+}
+
+.link:hover {
+  font-weight: bold;
+}
+
+.line {
+  color: firebrick;
+  font-size: 1.5rem;
+}
