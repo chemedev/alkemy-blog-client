@@ -3,27 +3,57 @@ import { useHistory } from 'react-router-dom'
 
 import styles from './NewPost.module.css'
 
-export default function NewPost({ setPosts }) {
+export default function NewPost({ modify = false, posts, setPosts, ...props }) {
+  let post, params, initialState
+  if (modify) {
+    ;[post] = posts.filter(post => post.id === +props.match.params.id)
+    params = `/${post.id}`
+    initialState = {
+      body: post.body,
+      title: post.title
+    }
+  } else {
+    params = ''
+    initialState = { title: '', body: '' }
+  }
+
   const history = useHistory()
-  const [data, setData] = useState({ title: '', body: '' })
   const [error, setError] = useState('')
+  const [data, setData] = useState(initialState)
 
   const handleChange = e => {
     const { name, value } = e.target
-    setData(prev => ({ ...prev, [name]: value }))
+    setData(state => ({ ...state, [name]: value }))
   }
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const url = 'https://jsonplaceholder.typicode.com/posts'
-    const res = await fetch(url, {
-      method: 'POST',
+
+    const url = `https://jsonplaceholder.typicode.com/posts${params}`
+
+    let options = {
+      method: modify ? 'PATCH' : 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-type': 'application/json' }
-    })
+    }
+
+    const res = await fetch(url, options)
+
     if (res.ok) {
       const newPost = await res.json()
-      setPosts(prev => [newPost, ...prev])
+      newPost.id = posts.length + 1
+      if (modify) {
+        setPosts(state => {
+          const index = state.findIndex(
+            post => post.id === +props.match.params.id
+          )
+          state[index] = { ...state[index], ...data }
+          return [...state]
+        })
+        history.push('/')
+      } else {
+        setPosts(state => [newPost, ...state])
+      }
       history.push('/')
     } else {
       setError('Error. Try again.')
@@ -32,7 +62,7 @@ export default function NewPost({ setPosts }) {
 
   return (
     <>
-      <h1 className={styles.title}>New post</h1>
+      <h1 className={styles.title}>{modify ? 'Change post' : 'New post'}</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div>
           <label className={styles.label} htmlFor="title">

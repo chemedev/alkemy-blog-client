@@ -24,13 +24,18 @@
 }
 
 .listText {
-  display: inline-block;
   color: aliceblue;
-  text-decoration-line: none;
+  display: inline-block;
+  margin: 0 5px;
+  max-width: 70%;
+  overflow: hidden;
   padding: 5px 0;
-  margin-left: 5px;
-  width: 600px;
+  text-decoration-line: none;
+  text-overflow: ellipsis;
   text-transform: capitalize;
+  vertical-align: bottom;
+  white-space: nowrap;
+  width: 600px;
 }
 
 .button {

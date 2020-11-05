@@ -24,24 +24,42 @@ function App() {
     <div className="App">
       <Router>
         <Nav />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <Home posts={posts} setPosts={setPosts} {...props} />
-            )}
-          />
-          <Route
-            exact
-            path="/details/:id"
-            render={props => <Details {...props} posts={posts} />}
-          />
-          <Route
-            path="/new"
-            render={props => <NewPost setPosts={setPosts} {...props} />}
-          />
-        </Switch>
+        {posts.length ? (
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Home posts={posts} setPosts={setPosts} {...props} />
+              )}
+            />
+            <Route
+              exact
+              path="/details/:id"
+              render={props => <Details posts={posts} {...props} />}
+            />
+            <Route
+              exact
+              path="/edit/:id"
+              render={props => (
+                <NewPost
+                  modify={true}
+                  posts={posts}
+                  setPosts={setPosts}
+                  {...props}
+                />
+              )}
+            />
+            <Route
+              path="/new"
+              render={props => (
+                <NewPost posts={posts} setPosts={setPosts} {...props} />
+              )}
+            />
+          </Switch>
+        ) : (
+          <h3 style={{ color: 'azure', textAlign: 'center' }}>Loading...</h3>
+        )}
       </Router>
     </div>
   )
