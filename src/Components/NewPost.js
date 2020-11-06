@@ -50,11 +50,12 @@ export default function NewPost({ modify = false, posts, setPosts, ...props }) {
           state[index] = { ...state[index], ...data }
           return [...state]
         })
-        history.push('/')
       } else {
         setPosts(state => [newPost, ...state])
       }
       history.push('/')
+      console.log(`--- ${options.method} ---`)
+      console.log(res)
     } else {
       setError('Error. Try again.')
     }

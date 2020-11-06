@@ -9,6 +9,7 @@ export default function Home({ posts, setPosts }) {
         method: 'DELETE'
       })
       if (res.ok) {
+        console.log('--- DELETE ---')
         console.log(res)
         setPosts(posts => posts.filter(post => post.id !== id))
       } else alert('Something went wrong...')
